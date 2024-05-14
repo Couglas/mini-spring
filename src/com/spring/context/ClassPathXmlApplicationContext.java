@@ -1,6 +1,6 @@
-package ioc.context;
+package context;
 
-import ioc.domain.BeanDefinition;
+import beans.factory.config.BeanDefinition;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;

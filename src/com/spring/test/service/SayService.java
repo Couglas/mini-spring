@@ -1,4 +1,4 @@
-package ioc.service;
+package test.service;
 
 /**
  * sayService

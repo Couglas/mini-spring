@@ -1,4 +1,4 @@
-package ioc.domain;
+package beans.factory.config;
 
 /**
  * Bean类

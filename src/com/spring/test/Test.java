@@ -1,7 +1,7 @@
-package ioc;
+package test;
 
-import ioc.context.ClassPathXmlApplicationContext;
-import ioc.service.SayService;
+import context.ClassPathXmlApplicationContext;
+import test.service.SayService;
 
 /**
  * 测试类

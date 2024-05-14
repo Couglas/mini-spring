@@ -1,6 +1,6 @@
-package ioc.service.impl;
+package test.service.impl;
 
-import ioc.service.SayService;
+import test.service.SayService;
 
 /**
  * sayService实现类
