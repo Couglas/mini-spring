@@ -1,4 +1,4 @@
-package beans;
+package com.spring.beans;
 
 /**
  * Bean异常处理类

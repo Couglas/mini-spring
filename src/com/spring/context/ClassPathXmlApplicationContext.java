@@ -1,63 +1,36 @@
-package context;
+package com.spring.context;
 
-import beans.factory.config.BeanDefinition;
-import org.dom4j.Document;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
-
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.spring.beans.BeansException;
+import com.spring.beans.factory.BeanFactory;
+import com.spring.beans.factory.SimpleBeanFactory;
+import com.spring.beans.factory.config.BeanDefinition;
+import com.spring.beans.factory.xml.XmlBeanDefinitionReader;
+import com.spring.core.ClassPathXmlResource;
+import com.spring.core.Resource;
 
 /**
- * xml解析
+ * xml解析应用上下文
  *
  * @author couglas
- * @since 2024/5/13
+ * @since 2024/5/15
  */
-public class ClassPathXmlApplicationContext {
-    private final List<BeanDefinition> beanDefinitions = new ArrayList<>();
-    private final Map<String, Object> singletons = new HashMap<>();
-
+public class ClassPathXmlApplicationContext implements BeanFactory {
+    BeanFactory beanFactory;
     public ClassPathXmlApplicationContext(String fileName) {
-        this.readXml(fileName);
-        this.instanceBeans();
+        Resource resource = new ClassPathXmlResource(fileName);
+        SimpleBeanFactory simpleBeanFactory = new SimpleBeanFactory();
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(simpleBeanFactory);
+        reader.loadBeanDefinition(resource);
+        this.beanFactory = simpleBeanFactory;
     }
 
-    private void readXml(String fileName) {
-        SAXReader saxReader = new SAXReader();
-
-        try {
-            URL xmlPath = this.getClass().getClassLoader().getResource(fileName);
-            Document document = saxReader.read(xmlPath);
-            Element rootElement = document.getRootElement();
-            for (Element element : rootElement.elements()) {
-                String id = element.attributeValue("id");
-                String className = element.attributeValue("class");
-                BeanDefinition beanDefinition = new BeanDefinition(id, className);
-
-                beanDefinitions.add(beanDefinition);
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
+    @Override
+    public Object getBean(String beanName) throws BeansException {
+        return this.beanFactory.getBean(beanName);
     }
 
-    private void instanceBeans() {
-        for (BeanDefinition beanDefinition : beanDefinitions) {
-            try {
-                singletons.put(beanDefinition.getId(), Class.forName(beanDefinition.getClassName()).getDeclaredConstructor().newInstance());
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-    }
-
-    public Object getBean(String beanName) {
-        return singletons.get(beanName);
+    @Override
+    public void registryBeanDefinition(BeanDefinition beanDefinition) {
+        this.beanFactory.registryBeanDefinition(beanDefinition);
     }
 }

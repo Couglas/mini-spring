@@ -1,6 +1,7 @@
-package test.service.impl;
+package com.spring.test.service.impl;
 
-import test.service.SayService;
+
+import com.spring.test.service.SayService;
 
 /**
  * sayService实现类

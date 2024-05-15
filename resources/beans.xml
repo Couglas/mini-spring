@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <beans>
-    <bean id="sayService" class="test.service.impl.SayServiceImpl" />
+    <bean id="sayService" class="com.spring.test.service.impl.SayServiceImpl" />
 </beans>

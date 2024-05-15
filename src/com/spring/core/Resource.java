@@ -1,4 +1,4 @@
-package core;
+package com.spring.core;
 
 import java.util.Iterator;
 

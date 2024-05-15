@@ -1,4 +1,4 @@
-package beans.factory.config;
+package com.spring.beans.factory.config;
 
 /**
  * Bean类

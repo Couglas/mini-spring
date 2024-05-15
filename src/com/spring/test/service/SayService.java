@@ -1,4 +1,4 @@
-package test.service;
+package com.spring.test.service;
 
 /**
  * sayService

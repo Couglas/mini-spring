@@ -1,7 +1,7 @@
-package beans.factory;
+package com.spring.beans.factory;
 
-import beans.BeansException;
-import beans.factory.config.BeanDefinition;
+import com.spring.beans.BeansException;
+import com.spring.beans.factory.config.BeanDefinition;
 
 /**
  * BeanFactory
