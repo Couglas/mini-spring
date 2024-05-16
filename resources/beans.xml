@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <beans>
-    <bean id="sayService" class="com.spring.test.service.impl.SayServiceImpl" />
+    <bean id="sayService" class="com.spring.test.service.impl.SayServiceImpl">
+        <property type="String" name="property1" value="value1" />
+        <property type="Integer" name="property2" value="6" />
+        <constructor-arg type="String" name="name" value="test" />
+        <constructor-arg type="int" name="level" value="3" />
+    </bean>
 </beans>

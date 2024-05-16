@@ -1,7 +1,6 @@
 package com.spring.beans.factory;
 
 import com.spring.beans.BeansException;
-import com.spring.beans.factory.config.BeanDefinition;
 
 /**
  * BeanFactory
@@ -10,7 +9,16 @@ import com.spring.beans.factory.config.BeanDefinition;
  * @since 2024/5/14
  */
 public interface BeanFactory {
-    Object getBean(String beanName) throws BeansException;
+    Object getBean(String name) throws BeansException;
 
-    void registryBeanDefinition(BeanDefinition beanDefinition);
+    boolean isSingleton(String name);
+
+    boolean isPrototype(String name);
+
+    Class<?> getType(String name);
+
+    boolean containsBean(String name);
+
+//    void registryBean(String beanName, Object object);
+
 }
